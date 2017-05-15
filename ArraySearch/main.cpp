@@ -7,6 +7,7 @@
 //
 
 #include <iostream>
+#include <list>
 #include "ArraySearch.hpp"
 #define ARRAY_SIZE 4 // задаем размер массива
 
@@ -16,7 +17,6 @@ int main(int argc, const char * argv[]) {
 
     ArraySearch<T> array(ARRAY_SIZE); //создаем экземпляр класса
     T temp[ARRAY_SIZE]; //массив с числами
-    
     
     // заполнение массива
     std::cout << "Введите элементы массива\n";

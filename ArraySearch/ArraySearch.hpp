@@ -22,6 +22,7 @@ public:
     void setArray(T*);  //заполнение массива
     void printMax();    //вывод числа
     bool findMax();     //поиск числа
+    bool findMax1();     //поиск числа
 };
 
 template <typename T>
@@ -42,7 +43,7 @@ template <typename T>
 void ArraySearch<T>::setArray(T *temp){
     
     //заполнение массива
-    for (size_t i; i < size; i++) {
+    for (size_t i = 0; i < size; i++) {
         arrayPtr[i] = temp[i];
     }
     
@@ -55,6 +56,7 @@ void ArraySearch<T>::setArray(T *temp){
             break;
         }
     }
+    
     //если не была сохранена позиция отрицательного элемента, значит таких нет
     if (pos == -1) {
         perror("Отрицательных элементов нет");
@@ -81,10 +83,25 @@ bool ArraySearch<T>:: findMax(){
 
 
 template <typename T>
+bool ArraySearch<T>:: findMax1(){
+    //поиск максимального отрицательного элемента
+    for (size_t i = 0; i < size; i++) {
+        if (arrayPtr[i] < 0) {
+            if(arrayPtr[i] < max){
+                max = arrayPtr[i];
+            }
+        }
+    }
+    
+    //если элемент был найден значит true иначе false
+    return max < 0 ? true : false;
+}
+
+template <typename T>
 void ArraySearch<T>:: printMax(){
     
     //вывод числа
-    if (findMax()) {
+    if (findMax1()) {
         std::cout << "Максимальный отрицательный элемент: "<< max << std::endl;
     }
 }
